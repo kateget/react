@@ -1,6 +1,9 @@
 import { Layout } from "antd";
+import React, { Suspense } from "react";
 import Header from "../components/Header";
-import Router from "../layouts";
+// import { Route, Routes } from "react-router-dom";
+import RouterDom from "../routers";
+// import Home from "../page/Home";
 
 const { Footer, Content } = Layout;
 
@@ -10,7 +13,9 @@ const Layouts = () => {
             <Layout>
                 <Header></Header>
                 <Content>
-                    <Router></Router>
+                    <Suspense>
+                        <RouterDom />
+                    </Suspense>
                 </Content>
                 <Footer>Footer</Footer>
             </Layout>

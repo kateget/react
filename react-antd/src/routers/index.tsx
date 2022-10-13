@@ -1,15 +1,28 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "../page/Home";
-import Detail from "../page/Detail";
+import { lazy } from "react";
+import { useRoutes } from "react-router-dom";
 
-const BasicRoute = () => (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/detail" element={<Detail />} />
-        </Routes>
-    </BrowserRouter>
-);
+// import Home from "../page/Home";
+const Home = lazy(() => import("../page/Home"));
+const Detail = lazy(() => import("../page/Detail"));
+const Nofound = lazy(() => import("../page/404"));
 
-export default BasicRoute;
+const RouterDom = () => {
+    const element = useRoutes([
+        {
+            path: "/",
+            element: <Home />,
+        },
+        {
+            path: "/detail",
+            element: <Detail />,
+            children: [],
+        },
+        {
+            path: "*",
+            element: <Nofound />,
+        },
+    ]);
+    return element;
+};
+
+export default RouterDom;
