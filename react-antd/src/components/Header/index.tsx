@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./index.scss";
+import { Carousel } from "antd";
 
 interface NavProps {
     label_zh: string;
@@ -61,8 +62,14 @@ const navList: NavProps[] = [
     },
 ];
 
+/**
+ * params menuCu [导航选择项]
+ */
 const Header = () => {
-    const [menuCu, setMenuCu] = useState<string>("Home");
+    const [menuCu, setMenuCu] = useState<string>("HOME");
+    /**
+     * nav导航链接
+     */
     const NavListDom = () => {
         const navigate = useNavigate();
         const handleClick = (val: NavProps) => {
@@ -81,30 +88,86 @@ const Header = () => {
         ));
         return <ul className="dis_flex nav_ul">{dom}</ul>;
     };
+    /**
+     * @description 轮播改变事件
+     */
+    const onChange = (currentSlide: number) => {
+        console.log(currentSlide);
+    };
+    /**
+     * @description 轮播
+     */
+    const Swiper = () => {
+        const contentStyle: React.CSSProperties = {
+            height: "160px",
+            color: "#fff",
+            lineHeight: "160px",
+            textAlign: "center",
+            background: "#364d79",
+        };
+        return menuCu === "HOME" ? (
+            <>
+                {/* <Carousel afterChange={onChange}>
+                    <div>
+                        <img src="http://www.youking.com/resource/images/25c5024231184cca9142d7dbd3bd7bcd_2.jpg"></img>
+                    </div>
+                    <div>
+                        <img src="http://www.youking.com/resource/images/bd46ac2364714e84bd23465f71db5778_2.jpg"></img>
+                    </div>
+                    <div>
+                        <img src="http://www.youking.com/resource/images/2235c1c9c4c6492584630c18a978be8e_2.jpg"></img>
+                    </div>
+                </Carousel> */}
+                <Carousel afterChange={onChange}>
+                    <div>
+                        <h3 style={contentStyle}>1</h3>
+                    </div>
+                    <div>
+                        <h3 style={contentStyle}>2</h3>
+                    </div>
+                    <div>
+                        <h3 style={contentStyle}>3</h3>
+                    </div>
+                    <div>
+                        <h3 style={contentStyle}>4</h3>
+                    </div>
+                </Carousel>
+            </>
+        ) : (
+            <>1</>
+        );
+    };
     useEffect(() => {
         // setMenuCu("Home");
     }, []);
     return (
-        <div className={`nav dis_flex ${menuCu}`}>
-            <div className="logo">
-                <img src={require("../../assets/home/logo.jpg")} alt="logo" />
-                <p className="logo-text">华润集团·万科集团战略供应商</p>
-            </div>
-            <div className="nav-content">
-                <div className="nav_title dis_flex">
-                    <span className="nav_title_text">
-                        始于1998年 专注标识系统一站式解决方案
-                    </span>
-                    <p className="dis_flex tel">
-                        <img
-                            src={require("../../assets/home/tel.jpg")}
-                            alt="电话"
-                        ></img>
-                        <span> 400-8879-739</span>
-                    </p>
+        <div className={`container_nav ${menuCu}`}>
+            <div className="nav dis_flex">
+                <div className="logo">
+                    <img
+                        src={require("../../assets/home/logo.jpg")}
+                        alt="logo"
+                    />
+                    <p className="logo-text">华润集团·万科集团战略供应商</p>
                 </div>
-                <NavListDom />
+                <div className="nav-content">
+                    <div className="nav_title dis_flex">
+                        <span className="nav_title_text">
+                            始于1998年 专注标识系统一站式解决方案
+                        </span>
+                        <p className="dis_flex tel">
+                            <img
+                                src={require("../../assets/home/tel.jpg")}
+                                alt="电话"
+                            ></img>
+                            <span> 400-8879-739</span>
+                        </p>
+                    </div>
+                    <NavListDom />
+                </div>
             </div>
+            {/** --------------------------- swiper轮播--------------------------------- */}
+            <Swiper />
         </div>
     );
 };

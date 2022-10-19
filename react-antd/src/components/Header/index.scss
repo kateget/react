@@ -13,11 +13,22 @@
         align-content: flex-end;
     }
 }
+.container_nav {
+    position: relative;
+    &.HOME {
+        height: 670px;
+    }
+}
 .nav {
     background-color: #fff;
     border-radius: 2px;
     width: 1200px;
     margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
     &_title {
         padding: 10px 50px 10px 20px;
         background-color: #f39800;
