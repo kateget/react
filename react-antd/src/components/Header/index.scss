@@ -1,14 +1,104 @@
-.logo {
-    padding: 10px 10px 10px 20px;
+.ant-layout {
+    background-color: black;
+    padding: 5px;
 }
-.nav_title {
-    padding: 5px 10px 5px 5px;
-    background-color: rgb(243, 152, 0);
-    border-radius: 0 0 5px 5px;
-    &_text,
-    .tel {
-        font-size: 18px;
+.logo {
+    padding: 20px 10px 20px 20px;
+    &-text {
+        font-size: 15px;
         font-weight: bold;
-        color: #fff;
+        color: #7d8488;
+        letter-spacing: 2px;
+        margin-top: 5px;
+        align-content: flex-end;
+    }
+}
+.nav {
+    background-color: #fff;
+    border-radius: 2px;
+    width: 1200px;
+    margin: 0 auto;
+    &_title {
+        padding: 10px 50px 10px 20px;
+        background-color: #f39800;
+        height: 50px;
+        border-radius: 0 0 0px 5px;
+        box-sizing: border-box;
+        width: 100%;
+        &_text,
+        .tel {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        &_text {
+            flex: 1;
+        }
+        .tel {
+            align-items: center;
+            font-size: 22px;
+            img {
+                margin-right: 10px;
+                width: 26px;
+                height: 26px;
+            }
+        }
+    }
+    &-content {
+        flex: 1;
+        padding-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &_ul {
+        padding-right: 20px;
+        width: 100%;
+        li {
+            display: flex;
+            flex: 1 1;
+            padding: 0 10px;
+            position: relative;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: flex-end;
+            cursor: pointer;
+            &::after {
+                display: block;
+                content: "";
+                position: absolute;
+                border-right: 1px dotted #c5c5c5;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                height: 22px;
+            }
+            &:last-child {
+                &::after {
+                    display: none;
+                }
+            }
+            &.active,
+            &:hover {
+                .nav-li-zh {
+                    color: #f39800;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    &-li {
+        &-zh {
+            color: #474747;
+            font-size: 16px;
+            width: 100%;
+
+            text-align: center;
+        }
+        &-en {
+            font-size: 12px;
+            color: #c5c5c5;
+            display: block;
+        }
     }
 }
