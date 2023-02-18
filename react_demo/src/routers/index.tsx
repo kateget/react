@@ -1,7 +1,8 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
 
-const Home = lazy(() => import('../pages/home'));
+const Home = lazy(() => import('@/pages/home'));
+const About = lazy(() => import('@/pages/about'));
 
 const router: RouteObject[] = [
   {
@@ -10,8 +11,13 @@ const router: RouteObject[] = [
     index: true,
   },
   {
-    path: '/',
+    path: '/home',
     element: <Home></Home>,
+    index: true,
+  },
+  {
+    path: '/about',
+    element: <About></About>,
     index: true,
   },
 ];

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from 'antd';
 
-const Home: React.FC = () => {
+const About: React.FC = () => {
   return (
     <div>
-      <Button>Home</Button>
+      <Button>About</Button>
     </div>
   );
 };
 
-export default Home;
+export default About;
