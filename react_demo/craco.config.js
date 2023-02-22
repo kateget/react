@@ -2,6 +2,7 @@ const path = require('path');
 const { name } = require('./package.json');
 
 const pathResolve = (pathUrl) => path.join(__dirname, pathUrl);
+const CracoLessPlugin = require('craco-less');
 
 module.exports = {
   reactScriptsVersion: 'react-scripts' /* (default value) */,
@@ -9,7 +10,7 @@ module.exports = {
     alias: {
       '@': pathResolve('src'),
       '@assets': pathResolve('src/assets'),
-      '@components': pathResolve('src/pages/components'),
+      '@components': pathResolve('src/components'),
       '@constants': pathResolve('src/constants'),
       '@containers': pathResolve('src/containers'),
       '@hooks': pathResolve('src/hooks'),
@@ -40,4 +41,23 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        //添加cssLoaderOptions代表模块化，不添加代表全局
+        // cssLoaderOptions: {
+        //   modules: {
+        //     localIdentName: '[local]_[hash:base64:5]',
+        //   },
+        // },
+        lessLoaderOptions: {
+          lessOptions: {
+            modifyVars: { '@primary-color': '#1DA57A' },
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
 };

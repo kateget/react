@@ -14,11 +14,13 @@ const router: RouteObject[] = [
     path: '/home',
     element: <Home></Home>,
     index: true,
+    id: '首页',
   },
   {
     path: '/about',
     element: <About></About>,
     index: true,
+    id: '关于',
   },
 ];
 
